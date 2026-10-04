@@ -16,3 +16,4 @@ Thumbs.db
 .idea/
 
 test_transcripts.py
+test_chunking.py

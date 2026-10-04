@@ -2,3 +2,4 @@ fastapi
 uvicorn[standard]
 pydantic-settings
 youtube-transcript-api
+langchain-text-splitters

@@ -15,3 +15,11 @@ class TranscriptLine(BaseModel):
     start: float 
     timestamp: str 
     text: str
+
+class Chunk(BaseModel):
+    """A piece of the transcript used for embedding and retrieval."""
+
+    chunk_id: int
+    text: str
+    start_time: float 
+    end_time: float
