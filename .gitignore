@@ -17,3 +17,5 @@ Thumbs.db
 
 test_transcripts.py
 test_chunking.py
+try_embeddings.py
+test_embeddings.py
