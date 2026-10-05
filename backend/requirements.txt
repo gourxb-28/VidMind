@@ -5,3 +5,4 @@ youtube-transcript-api
 langchain-text-splitters
 sentence-transformers
 numpy
+faiss-cpu
