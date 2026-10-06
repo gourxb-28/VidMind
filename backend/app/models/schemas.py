@@ -23,3 +23,9 @@ class Chunk(BaseModel):
     text: str
     start_time: float 
     end_time: float
+
+class RetrievedChunk(Chunk):
+    """A chunk returned by retrieval, with its similarity score."""
+
+    score: float
+

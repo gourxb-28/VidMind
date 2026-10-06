@@ -21,3 +21,5 @@ try_embeddings.py
 test_embeddings.py
 try_vectorstore.py
 test_vectorstore.py
+try_retriever.py
+test_retriever.py
