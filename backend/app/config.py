@@ -13,6 +13,11 @@ class Settings(BaseSettings):
     gemini_model: str = "gemini-3.5-flash-lite"
     gemini_timeout_seconds: int = 60
     gemini_thinking_level: str = "" 
+    gemini_max_attempts: int = 3
+    gemini_retry_base_seconds: float = 4.0
+    notes_direct_char_limit: int = 30000
+    notes_batch_chars: int = 12000
+    notes_max_batches: int = 20
     
     embedding_model: str = "BAAI/bge-small-en-v1.5"
     chunk_size: int = 1000
