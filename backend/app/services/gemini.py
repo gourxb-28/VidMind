@@ -4,7 +4,7 @@ from functools import lru_cache
 
 import httpx
 from google import genai
-
+from google.genai import types
 from app.config import settings
 
 logger = logging.getLogger("app.gemini")
@@ -20,8 +20,10 @@ class GeminiError(Exception):
 
 @lru_cache(maxsize=1)
 def _get_client() -> genai.Client:
-    
-    return genai.Client(api_key=settings.gemini_api_key)
+    return genai.Client(
+        api_key=settings.gemini_api_key,
+        http_options=types.HttpOptions(retry_options=types.HttpRetryOptions(attempts=1)),
+    )
 
 
 def _check_config() -> None:
@@ -63,7 +65,9 @@ def _to_gemini_error(exc: Exception) -> GeminiError:
         return GeminiError(
             "The AI service is temporarily unavailable. Please try again shortly.", 502, retryable=True
         )
-    if isinstance(exc, httpx.TransportError):
+    if isinstance(exc, httpx.TransportError) or "APIConnectionError" in {
+        cls.__name__ for cls in type(exc).__mro__
+    }:
         logger.error("Could not reach Gemini: %s", type(exc).__name__)
         return GeminiError("Couldn't reach the AI service. Please try again.", 502, retryable=True)
 

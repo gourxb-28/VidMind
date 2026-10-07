@@ -1,31 +1,65 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class TranscriptSegment(BaseModel):
-    """One cleaned caption segment. Kept in the session for chunking."""
-
     text: str
-    start: float 
+    start: float
     duration: float
 
 
 class TranscriptLine(BaseModel):
-    """One display line for the UI (several segments merged together)."""
-
-    start: float 
-    timestamp: str 
+    start: float
+    timestamp: str
     text: str
 
-class Chunk(BaseModel):
-    """A piece of the transcript used for embedding and retrieval."""
 
+class Chunk(BaseModel):
     chunk_id: int
     text: str
     start_time: float 
-    end_time: float
+    end_time: float  
+
 
 class RetrievedChunk(Chunk):
-    """A chunk returned by retrieval, with its similarity score."""
-
     score: float
 
+
+class AnalyzeRequest(BaseModel):
+    url: str = Field(max_length=5000)
+
+
+class AnalyzeResponse(BaseModel):
+    session_id: str
+    video_id: str
+    language: str
+    is_generated: bool  
+    was_translated: bool  
+    transcript: list[TranscriptLine]
+    status: str = "ready"
+
+
+class SessionRequest(BaseModel):
+    session_id: str = Field(min_length=1, max_length=64)
+
+
+class NotesResponse(BaseModel):
+    notes: str
+
+
+class ChatRequest(BaseModel):
+    model_config = ConfigDict(str_strip_whitespace=True)
+
+    session_id: str = Field(min_length=1, max_length=64)
+    question: str = Field(min_length=1, max_length=1000)
+
+
+class Source(BaseModel):
+    start_time: float  
+    end_time: float
+    timestamp: str 
+    text: str  
+
+
+class ChatResponse(BaseModel):
+    answer: str
+    sources: list[Source]

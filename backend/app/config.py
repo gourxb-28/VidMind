@@ -25,6 +25,7 @@ class Settings(BaseSettings):
     top_k: int = 4
     allowed_origins: str = "http://localhost:5173"
     session_ttl_minutes: int = 120
+    max_sessions: int = 100
     max_transcript_chars: int = 300000
 
     @property
