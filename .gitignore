@@ -23,3 +23,8 @@ try_vectorstore.py
 test_vectorstore.py
 try_retriever.py
 test_retriever.py
+test_gemini.py
+try_gemini.py
+test_gemini_retry.py
+test_notes.py
+try_notes.py

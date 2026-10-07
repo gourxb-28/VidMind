@@ -10,7 +10,10 @@ class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=ENV_FILE, extra="ignore")
 
     gemini_api_key: str = ""
-    gemini_model: str = ""
+    gemini_model: str = "gemini-3.5-flash-lite"
+    gemini_timeout_seconds: int = 60
+    gemini_thinking_level: str = "" 
+    
     embedding_model: str = "BAAI/bge-small-en-v1.5"
     chunk_size: int = 1000
     chunk_overlap: int = 200
