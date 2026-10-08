@@ -31,3 +31,4 @@ try_notes.py
 test_gemini_sdk.py
 test_api.py
 test_session_store.py
+.env.*
