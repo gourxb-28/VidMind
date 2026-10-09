@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Chat from './Chat'
 import Notes from './Notes'
 import Tabs, { type TabId } from './Tabs'
 
@@ -34,9 +35,9 @@ export default function AssistantPanel({ sessionId, onSeek, className = '' }: As
         id="panel-chat"
         aria-labelledby="tab-chat"
         hidden={tab !== 'chat'}
-        className="flex min-h-0 flex-1 items-center justify-center p-6 text-center text-sm text-zinc-500"
+        className="flex min-h-0 flex-1 flex-col"
       >
-        AI Chat arrives in Phase 16.
+        <Chat sessionId={sessionId} onSeek={onSeek} />
       </div>
     </section>
   )

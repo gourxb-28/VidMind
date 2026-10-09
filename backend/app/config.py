@@ -22,7 +22,7 @@ class Settings(BaseSettings):
     embedding_model: str = "BAAI/bge-small-en-v1.5"
     chunk_size: int = 1000
     chunk_overlap: int = 200
-    top_k: int = 4
+    top_k: int = 8
     allowed_origins: str = "http://localhost:5173"
     session_ttl_minutes: int = 120
     max_sessions: int = 100

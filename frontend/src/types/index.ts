@@ -37,3 +37,13 @@ export interface HealthResponse {
 export interface PlayerHandle {
   seekTo: (seconds: number) => void
 }
+
+export type ChatItem =
+  | { id: number; role: 'user'; text: string }
+  | { id: number; role: 'assistant'; text: string; sources: Source[] }
+  | { id: number; role: 'error'; text: string; question: string; canRetry: boolean }
+
+export interface HistoryMessage {
+  role: 'user' | 'assistant'
+  text: string
+}

@@ -1,4 +1,10 @@
-import type { AnalyzeResponse, HealthResponse, NotesResponse } from '../types'
+import type {
+  AnalyzeResponse,
+  ChatResponse,
+  HealthResponse,
+  HistoryMessage,
+  NotesResponse,
+} from '../types'
 const rawUrl: string | undefined = import.meta.env.VITE_API_URL
 export const API_URL = (rawUrl ?? 'http://127.0.0.1:8000').replace(/\/+$/, '')
 
@@ -90,4 +96,16 @@ export function getNotes(sessionId: string): Promise<NotesResponse> {
 
   notesInFlight.set(sessionId, promise)
   return promise
+}
+
+export function askQuestion(
+  sessionId: string,
+  question: string,
+  history: HistoryMessage[] = [],
+): Promise<ChatResponse> {
+  return request<ChatResponse>('/api/v1/chat', {
+    method: 'POST',
+    body: { session_id: sessionId, question, history },
+    timeoutMs: 150_000,
+  })
 }

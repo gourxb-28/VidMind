@@ -10,4 +10,4 @@ router = APIRouter(prefix="/api/v1")
 @router.post("/chat", response_model=ChatResponse)
 def ask(request: ChatRequest) -> ChatResponse:
     session = get_session(request.session_id)
-    return answer_question(session, request.question)
+    return answer_question(session, request.question, history=request.history)
