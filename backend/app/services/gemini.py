@@ -29,7 +29,7 @@ def _get_client() -> genai.Client:
 def _check_config() -> None:
     key = settings.gemini_api_key.strip()
     model = settings.gemini_model.strip()
-    if not key:
+    if not key or key == "your_key_here":
         logger.error("GEMINI_API_KEY is missing. Set it in backend/.env")
         raise GeminiError("The AI service isn't configured on the server.", 500)
     if not model or model.startswith("set_in"):
@@ -84,7 +84,7 @@ def generate_text(
     kwargs: dict = {
         "model": settings.gemini_model,
         "input": prompt,
-        "store": False,
+        "store": False,  
         "timeout": settings.gemini_timeout_seconds,
     }
     if system_instruction:

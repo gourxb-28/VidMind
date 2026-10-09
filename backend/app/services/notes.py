@@ -27,6 +27,8 @@ Rules:
 - Write in the same language as the transcript.
 - If a section has nothing in the transcript (for example, no examples were given), leave that section out.
 - In "Important Terms", list a term only if the speaker actually explains it. Never write your own definitions. If no terms are explained, leave the section out.
+- Do not use LaTeX or dollar-sign math notation. Write formulas in plain text or inside `backticks`, for example `O(N)` or `N <= 10^15`.
+- In "Important Terms", list a term only if the speaker actually explains it. Never write your own definitions. If no terms are explained, leave the section out.
 - Output Markdown only, with no introduction or closing remarks.
 
 Use this structure:
@@ -59,6 +61,7 @@ Rules:
 - Use bullet points. Begin each new topic with its approximate start time, like (02:14).
 - Keep key points, terms with their meanings, examples, and conclusions.
 - No introduction and no closing remarks.
+- Do not use LaTeX or dollar-sign math notation. Write formulas in plain text or inside `backticks`, for example `O(N)`.
 - Write in the same language as the transcript."""
 
 REDUCE_SYSTEM = (
