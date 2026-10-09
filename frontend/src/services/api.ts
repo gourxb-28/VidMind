@@ -1,5 +1,4 @@
-import type { AnalyzeResponse, HealthResponse } from '../types'
-
+import type { AnalyzeResponse, HealthResponse, NotesResponse } from '../types'
 const rawUrl: string | undefined = import.meta.env.VITE_API_URL
 export const API_URL = (rawUrl ?? 'http://127.0.0.1:8000').replace(/\/+$/, '')
 
@@ -75,4 +74,20 @@ export function analyzeVideo(url: string): Promise<AnalyzeResponse> {
     body: { url },
     timeoutMs: 180_000,
   })
+}
+
+
+const notesInFlight = new Map<string, Promise<NotesResponse>>()
+export function getNotes(sessionId: string): Promise<NotesResponse> {
+  const running = notesInFlight.get(sessionId)
+  if (running) return running
+
+  const promise = request<NotesResponse>('/api/v1/notes', {
+    method: 'POST',
+    body: { session_id: sessionId },
+    timeoutMs: 300_000,
+  }).finally(() => notesInFlight.delete(sessionId))
+
+  notesInFlight.set(sessionId, promise)
+  return promise
 }

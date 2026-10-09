@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import AssistantPanel from '../components/AssistantPanel'
 import Transcript from '../components/Transcript'
 import YouTubePlayer from '../components/YouTubePlayer'
 import type { AnalyzeResponse, PlayerHandle } from '../types'
@@ -29,10 +30,13 @@ export default function Workspace({ analysis }: WorkspaceProps) {
         />
       </section>
 
-      {/* Right (about 60%): AI Notes / AI Chat tabs arrive in Phases 15 and 16. */}
-      <section className="flex min-h-64 items-center justify-center rounded-2xl border border-dashed border-white/10 p-6 text-center text-sm text-zinc-500 lg:col-span-3">
-        AI Notes and AI Chat will appear here (Phases 15 and 16).
-      </section>
+      {/* Right (about 60%): AI Notes and AI Chat tabs. */}
+      <AssistantPanel
+        key={analysis.session_id}
+        sessionId={analysis.session_id}
+        onSeek={handleSeek}
+        className="lg:col-span-3 lg:min-h-0"
+      />
     </main>
   )
 }
