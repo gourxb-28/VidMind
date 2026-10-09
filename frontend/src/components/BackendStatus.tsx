@@ -42,7 +42,7 @@ export default function BackendStatus() {
   return (
     <div className="mt-8 flex items-center justify-center gap-2 text-xs text-zinc-500" role="status">
       <span className={`h-2 w-2 rounded-full ${DOT_COLOR[status]}`} aria-hidden="true" />
-      <span>{LABEL[status]}</span>
+      <span className="libre-franklin">{LABEL[status]}</span>
       {status === 'down' && (
         <button
           type="button"

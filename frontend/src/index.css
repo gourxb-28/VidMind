@@ -6,6 +6,15 @@
   color-scheme: dark;
 }
 
+
+body {
+  font-family: "Libre Franklin", sans-serif;
+}
+
+.libre-franklin {
+  font-family: "Libre Franklin", sans-serif;
+}
+
 body {
   min-height: 100vh;
   background-color: #09090b; /* zinc-950 */

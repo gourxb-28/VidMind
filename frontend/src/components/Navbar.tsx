@@ -13,7 +13,7 @@ export default function Navbar({ showNew, onNew }: NavbarProps) {
               <path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z" />
             </svg>
           </div>
-          <span className="text-base font-semibold tracking-tight">YouTube AI Analyzer</span>
+          <span className="text-base font-semibold tracking-tight">VidMind</span>
         </div>
 
         {showNew && (

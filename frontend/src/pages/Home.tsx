@@ -26,14 +26,14 @@ export default function Home({ onAnalyze, loading, error }: HomeProps) {
 
   return (
     <main className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-2xl flex-col items-center justify-center px-6 pb-24 text-center">
-      <span className="mb-6 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-zinc-400">
+      <span className="mb-6 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-zinc-400 libre-franklin">
         AI notes + chat, grounded in the transcript
       </span>
 
       <h1 className="bg-linear-to-b from-white to-zinc-400 bg-clip-text text-4xl font-semibold tracking-tight text-transparent sm:text-5xl">
-        YouTube AI Analyzer
+        VidMind
       </h1>
-      <p className="mt-4 text-lg text-zinc-400">Understand any YouTube video with AI</p>
+      <p className="mt-4 text-lg text-zinc-400">Understand any YouTube video with VidMind</p>
 
       <form onSubmit={handleSubmit} className="mt-10 w-full" noValidate aria-busy={loading}>
         <div className="flex flex-col gap-2 rounded-2xl border border-white/10 bg-white/5 p-2 shadow-2xl shadow-black/40 focus-within:border-indigo-400/60 sm:flex-row">
